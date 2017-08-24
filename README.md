@@ -2,6 +2,12 @@
 
 NodeJS web scrapper para resgatar presenças dos alunos da FATEC no SIGA utilizando PhantomJS.
 
+## Instalando
+
+```sh
+npm install --save fatec-posso-faltar
+```
+
 ## Executando
 
 É compatível com ES2015 e ES6, em Node v6.11.0:
