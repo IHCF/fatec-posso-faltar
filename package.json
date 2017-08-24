@@ -1,0 +1,41 @@
+{
+  "name": "fatec-posso-faltar",
+  "version": "1.0.0",
+  "description": "NodeJS web scrapper para resgatar presenças dos alunos da FATEC do SIGA utilizando PhantomJS",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/babel src --presets babel-preset-es2015 --plugins add-module-exports --out-dir dist",
+    "prepublish": "npm run build"
+  },
+  "keywords": [
+    "fatec",
+    "siga",
+    "faltas",
+    "presenças"
+  ],
+  "author": "Filipe Costa Meneses",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.22.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.2.10",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.22.0",
+    "babel-preset-env": "^1.3.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.22.0",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-friendly-formatter": "^2.0.7",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-html": "^2.0.0",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "phantom": "^4.0.5"
+  },
+  "dependencies": {
+    "phantom": "^4.0.5"
+  }
+}
