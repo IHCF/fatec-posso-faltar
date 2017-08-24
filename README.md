@@ -16,7 +16,7 @@ npm install --save fatec-posso-faltar
 let PossoFaltar = require('fatec-posso-faltar')
 let login = 'SEU_LOGIN'
 let password = 'SUA_SENHA'
-let classroom = 'SUA_TURMA'
+let classroom = 'SUA_TURMA' // A, B...
 let log = true // Se deseja fazer o log das etapas, padrão é `false`
 const possoFaltar = new PossoFaltar({login, password, classroom, log})
 possoFaltar.verificarFaltas({day: 'today'}).then(result => {
