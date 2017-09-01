@@ -74,6 +74,7 @@ class PossoFaltar {
       delete todayClass.endAt
       myAbsences += todayAbsences
       todayClass.name = util.findDisciplineName(attendances, todayClass.disciplineInitials)
+      todayClass.presences = util.findDisciplinePresences(attendances, todayClass.disciplineInitials)
       todayClass.absenses = myAbsences
       todayClass.maxAbsences = maxAbsences
       todayClass.canIMiss = maxAbsences - myAbsences >= 0
@@ -98,6 +99,9 @@ class PossoFaltar {
       return this._wait(page, function () {
         return document.title === 'Faltas parciais do estudante'
       })
+    }).then(() => {
+      // Delay to load content
+      return new Promise(resolve => setTimeout(resolve, 1000))
     }).then(() => {
       this.log('Resgatando dados...')
       return page.evaluate(function () {

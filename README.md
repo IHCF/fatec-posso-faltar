@@ -20,7 +20,6 @@ let classroom = 'SUA_TURMA' // A, B...
 let log = true // Se deseja fazer o log das etapas, padrão é `false`
 const possoFaltar = new PossoFaltar({login, password, classroom, log})
 possoFaltar.verificarFaltas({day: 'today'}).then(result => {
-  console.log(result)
   // Irá retornar um JSON com esta estrutura:
   // [
   //   {
@@ -28,6 +27,7 @@ possoFaltar.verificarFaltas({day: 'today'}).then(result => {
   //     disciplineInitials: 'IHC001',
   //     workload: 2,
   //     name: 'Interação Humano Computador',
+  //     presences: 6,
   //     absenses: 4,
   //     maxAbsences: 10,
   //     canIMiss: true
