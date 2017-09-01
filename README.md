@@ -24,22 +24,13 @@ possoFaltar.verificarFaltas({day: 'today'}).then(result => {
   // Irá retornar um JSON com esta estrutura:
   // [
   //   {
-  //     "classroom": "A",
-  //     "disciplineInitials": "HST002",
-  //     "workload": 2,
-  //     "canIMiss": true
-  //   },
-  //   {
-  //     "classroom": "A",
-  //     "disciplineInitials": "IES200",
-  //     "workload": 4,
-  //     "canIMiss": true
-  //   },
-  //   {
-  //     "classroom": "A",
-  //     "disciplineInitials": "ISO100",
-  //     "workload": 4,
-  //     "canIMiss": true
+  //     classroom: 'A',
+  //     disciplineInitials: 'IHC001',
+  //     workload: 2,
+  //     name: 'Interação Humano Computador',
+  //     absenses: 4,
+  //     maxAbsences: 10,
+  //     canIMiss: true
   //   }
   // ]
 })

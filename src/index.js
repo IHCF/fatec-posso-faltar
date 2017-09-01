@@ -73,6 +73,9 @@ class PossoFaltar {
       delete todayClass.startAt
       delete todayClass.endAt
       myAbsences += todayAbsences
+      todayClass.name = util.findDisciplineName(attendances, todayClass.disciplineInitials)
+      todayClass.absenses = myAbsences
+      todayClass.maxAbsences = maxAbsences
       todayClass.canIMiss = maxAbsences - myAbsences >= 0
     })
     return todayClasses

@@ -1,6 +1,6 @@
 {
   "name": "fatec-posso-faltar",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "NodeJS web scrapper para resgatar presenças dos alunos da FATEC do SIGA utilizando PhantomJS",
   "main": "dist/index.js",
   "scripts": {
