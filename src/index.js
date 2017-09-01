@@ -31,7 +31,22 @@ class PossoFaltar {
       }, 1000)
     }, {login, password})
   }
+  verificarAssiduidadeTotal () {
+    return this._scrapData()
+  }
+  verificarAssiduidadePorMateria ({initials}) {
+    return this._scrapData().then(({attendances}) => {
+      return attendances.filter(attendance => {
+        return attendance.disciplineInitials === initials
+      })[0]
+    })
+  }
   verificarFaltas ({day}) {
+    return this._scrapData().then(({attendances, schedules, scheduleGrid}) => {
+      return this._computeAttendances({day, attendances, schedules, scheduleGrid})
+    })
+  }
+  _scrapData () {
     let phantomInstance = phantom.create()
     return phantomInstance.then(instance => {
       this.instance = instance
@@ -44,10 +59,9 @@ class PossoFaltar {
     .then(() => this._getAttendance())
     .then((attendances) => {
       return this._getSchedule(this.page).then(({schedules, scheduleGrid}) => {
-        return {day, attendances, schedules, scheduleGrid}
+        return {attendances, schedules, scheduleGrid}
       })
     })
-    .then(({day, attendances, schedules, scheduleGrid}) => this._computeAttendances({day, attendances, schedules, scheduleGrid}))
   }
   _computeAttendances ({day, attendances, schedules, scheduleGrid}) {
     this.log('Verificando faltas...')
@@ -59,11 +73,12 @@ class PossoFaltar {
     })[0].schedule
     let todayClasses = todaySchedules.reduce((classes, schedule) => {
       let isRepeated = classes.filter((_class) => _class.disciplineInitials === schedule.disciplineInitials).length > 0
-      if (!isRepeated && schedule.classroom === this.data.classroom) {
+      if (!isRepeated && util.isMyDiscipline(scheduleGrid, schedule)) {
         classes.push(schedule)
       }
       return classes
     }, [])
+    console.log(todayClasses)
 
     todayClasses.forEach(function (todayClass) {
       todayClass.workload = util.findDisciplineWorkload(scheduleGrid, todayClass.disciplineInitials)

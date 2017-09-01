@@ -19,6 +19,7 @@ let password = 'SUA_SENHA'
 let classroom = 'SUA_TURMA' // A, B...
 let log = true // Se deseja fazer o log das etapas, padrão é `false`
 const possoFaltar = new PossoFaltar({login, password, classroom, log})
+
 possoFaltar.verificarFaltas({day: 'today'}).then(result => {
   // Irá retornar um JSON com esta estrutura:
   // [
@@ -33,6 +34,54 @@ possoFaltar.verificarFaltas({day: 'today'}).then(result => {
   //     canIMiss: true
   //   }
   // ]
+})
+
+possoFaltar.verificarAssiduidadePorMateria({initials: 'ILP007'}).then(result => {
+  // Irá retornar um JSON com esta estrutura:
+  // {
+  //   "absences": 2,
+  //   "disciplineInitials": "ILP007",
+  //   "name": "Programação Orientada a Objetos",
+  //   "presences": 18
+  // }
+})
+
+possoFaltar.verificarAssiduidadeTotal().then(result => {
+  // Irá retornar um JSON com esta estrutura:
+  // {
+  //   "attendances": [
+  //     {
+  //       "absences": 0,
+  //       "disciplineInitials": "CEF100",
+  //       "name": "Economia e Finanças",
+  //       "presences": 0
+  //     },
+  //     ...
+  //   ],
+  //   "schedules": [
+  //     {
+  //       "day": "monday",
+  //       "schedule": [
+  //         {
+  //           "classroom": "A",
+  //           "disciplineInitials": "CEF100",
+  //           "endAt": "10:55",
+  //           "startAt": "10:05"
+  //         },
+  //         ...
+  //       ]
+  //     },
+  //     ...
+  //   ],
+  //   "scheduleGrid": [
+  //     {
+  //       "classroom": "A",
+  //       "disciplineInitials": "CEF100",
+  //       "workload": 2
+  //     },
+  //     ...
+  //   ]
+  // }
 })
 ```
 

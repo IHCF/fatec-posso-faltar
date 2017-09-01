@@ -23,6 +23,11 @@ export default {
     })[0]
     return (result && result.presences) || 0
   },
+  isMyDiscipline (scheduleGrid, {classroom, disciplineInitials}) {
+    return scheduleGrid.filter(schedule => {
+      return schedule.disciplineInitials === disciplineInitials && schedule.classroom === classroom
+    }).length > 0
+  },
   todayClassesByDiscipline (todaySchedules, initials) {
     return todaySchedules.filter(function (todaySchedule) {
       return todaySchedule.disciplineInitials === initials
