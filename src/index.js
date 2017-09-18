@@ -78,7 +78,6 @@ class PossoFaltar {
       }
       return classes
     }, [])
-    console.log(todayClasses)
 
     todayClasses.forEach(function (todayClass) {
       todayClass.workload = util.findDisciplineWorkload(scheduleGrid, todayClass.disciplineInitials)
@@ -98,13 +97,13 @@ class PossoFaltar {
   }
   _getAttendance () {
     let page = this.page
-    this.log('Abrindo tela de presenças...')
+    this.log('Procurando botão para tela de faltas...')
     return this._wait(page, function () {
-      return document.querySelector('#ygtvlabelel11Span') !== null
+      return document.querySelector('#ygtv12') !== null
     }).then(() => {
       this.log('Abrindo tela de faltas...')
       return page.evaluate(function () {
-        document.querySelector('#ygtvlabelel11Span').click()
+        document.querySelector('#ygtv12 a').click()
       })
     }).then(() => {
       // Delay to load content
@@ -136,10 +135,10 @@ class PossoFaltar {
   _getSchedule (page) {
     this.log('Resgatando grade...')
     return this._wait(page, function () {
-      return document.querySelector('#ygtvlabelel9Span') !== null
+      return document.querySelector('#ygtv10 a') !== null
     }).then(() => {
       return page.evaluate(function () {
-        document.querySelector('#ygtvlabelel9Span').click()
+        document.querySelector('#ygtv10 a').click()
       })
     }).then(() => {
       // Delay to load content
