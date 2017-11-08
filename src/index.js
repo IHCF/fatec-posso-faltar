@@ -7,7 +7,7 @@ class PossoFaltar {
       throw new Error('Preencha todos os valores: login, password, classroom')
     }
     const consts = {
-      URL: 'https://www.sigacentropaulasouza.com.br/aluno/login.aspx',
+      URL: 'https://siga.cps.sp.gov.br/aluno/login.aspx',
       DAYS: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
     }
     classroom = classroom.toUpperCase()
